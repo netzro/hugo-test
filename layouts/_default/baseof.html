@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, sans-serif; background: #f9fafb; color: #111827; line-height: 1.6; }
+    header { background: #111827; color: #fff; padding: 1rem; text-align: center; }
+    header h1 a { color: #fff; text-decoration: none; }
+    nav { background: #1f2937; padding: 0.5rem; text-align: center; }
+    nav a { color: #d1d5db; text-decoration: none; margin: 0 0.75rem; font-size: 0.85rem; }
+    nav a:hover { color: #fff; }
+    main { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    footer { text-align: center; padding: 1rem; font-size: 0.75rem; color: #6b7280; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fff; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+    .card-body { padding: 0.75rem; }
+    .card-body h3 { font-size: 0.9rem; margin: 0 0 0.25rem; }
+    .card-body p { font-size: 0.8rem; color: #6b7280; margin: 0 0 0.4rem; }
+    .card-body .note { font-size: 0.75rem; color: #4b5563; margin: 0 0 0.5rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .badge { display: inline-block; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.3rem; }
+    .badge-finished { background: #d1fae5; color: #065f46; }
+    .badge-tv { background: #eff6ff; color: #2563eb; }
+    .badge-rewatch { background: #fef3c7; color: #92400e; }
+    .badge-onrepeat { background: #fef3c7; color: #92400e; }
+    .stars { color: #f59e0b; font-size: 0.75rem; }
+    details > summary { cursor: pointer; padding: 0.5rem; background: #e5e7eb; border-radius: 4px; margin: 0.25rem 0; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 1rem 0; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    <p style="font-size:0.8rem;color:#9ca3af;">{{ .Site.Params.description }}</p>
+  </header>
+  <nav>
+    {{ range .Site.Params.menu }}
+    <a href="{{ .url }}">{{ .name }}</a>
+    {{ end }}
+  </nav>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer>
+    Gifted's Space — Powered by Hugo
+  </footer>
+</body>
+</html>

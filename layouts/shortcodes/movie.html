@@ -1,0 +1,9 @@
+<div class="movie-card">
+  <img src="{{ .Get "poster" }}" alt="{{ .Get "title" }}" width="300" height="450" loading="lazy">
+  <div class="movie-card-body">
+    <h3>{{ .Get "title" }}{{ if .Get "tv" }} <span class="badge badge-tv">TV</span>{{ end }}{{ if .Get "rewatch" }} <span class="badge badge-rewatch">↻ rewatched</span>{{ end }}</h3>
+    <p class="released">Released: {{ .Get "released" }}</p>
+    {{ if .Get "synopsis" }}<p class="note">{{ .Get "synopsis" }}</p>{{ end }}
+    {{ if .Get "watched" }}<p class="watched">Watched: {{ .Get "watched" }}</p>{{ end }}
+  </div>
+</div>

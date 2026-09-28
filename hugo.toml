@@ -1,0 +1,40 @@
+baseURL = "https://netzro.github.io/"
+languageCode = "en-us"
+title = "Gifted's Space"
+theme = ""
+
+[frontmatter]
+date = ["date", "publishDate", "Date"]
+
+[mediaTypes]
+  [mediaTypes."text/markdown"]
+    suffixes = ["md"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  posts = "/posts/:year/:month/:day/:slug/"
+  pages = "/:slug/"
+
+[params]
+  description = "A personal site by Gifted"
+
+[[params.menu]]
+  name = "Movies"
+  url = "/movies/"
+  weight = 1
+[[params.menu]]
+  name = "Music"
+  url = "/music/"
+  weight = 2
+[[params.menu]]
+  name = "Reading"
+  url = "/reading-list/"
+  weight = 3
+[[params.menu]]
+  name = "Blogroll"
+  url = "/blogroll/"
+  weight = 4

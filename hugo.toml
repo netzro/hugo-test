@@ -1,7 +1,6 @@
 baseURL = "https://netzro.github.io/"
 languageCode = "en-us"
 title = "Gifted's Space"
-theme = ""
 
 [frontmatter]
 date = ["date", "publishDate", "Date"]

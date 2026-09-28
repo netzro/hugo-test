@@ -1,18 +1,9 @@
-name: Deploy Hugo site to GitHub Pages
+name: Build Hugo site
 
 on:
   push:
     branches: [master, hugo-test]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -29,9 +20,6 @@ jobs:
           sudo mv hugo /usr/local/bin/
           hugo version
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
       - name: Build
         run: hugo --minify
 
@@ -39,14 +27,3 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
